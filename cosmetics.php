@@ -93,79 +93,7 @@ echo "</pre>";
        <h4 style="color:pink"> Tipo: <?php echo $raridade ?> </h4>
         <h4 style="color:yellow"> Set do cosmético: <?php echo $set ?> </h4>
        <h4 style="color:orange"> Ultíma vez vista/Ultíma atualização: "<?php echo $att ?>"</h4>
-    <?php
-        $webhookurl = "https://discord.com/api/webhooks/1043317973168963614/axA6EwJ1x1_9c2v0RliUFXcEDTt4q90xQgxWMszngMUM4DUfbTItGjRDX6Ekg9trE7Dp";
-
-$timestamp = date("c", strtotime("now"));
-
-$json_data = json_encode([
-    // Message
-    "content" => "Cosmético $resposta foi puxada.",
     
-    // Username
-    "username" => "Yuppigo by Aligg",
-
-    // Text-to-speech
-    "tts" => false,
-
-    // File upload
-    // "file" => "",
-
-    // Embeds Array
-    "embeds" => [
-        [
-            // Embed Title
-            "title" => "Novo cosmético gerado $resposta",
-
-            // Embed Type
-            "type" => "rich",
-
-            // Embed Description
-            "description" => "**$description** \n Raridade: $raridade \n Conjunto: $set \n Tipo: $type",
-
-            "image" => [
-                "url" => "$image",
-            ],
-
- 
-             
-
-            // Timestamp of embed must be formatted as ISO8601
-            "timestamp" => $timestamp,
-
-            // Embed left border color in HEX
-            "color" => hexdec( "3366ff" ),
-
-            // Author
-            "author" => [
-                "name" => "YuppiGo",
-                "url" => "https://yuppigo.net/"
-            ],
-
-            // Additional Fields array
-            "fields" =>[
-                // Etc..
-            ]
-        ]
-    ]
-
-], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
-
-
-$ch = curl_init( $webhookurl );
-curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
-curl_setopt( $ch, CURLOPT_POST, 1);
-curl_setopt( $ch, CURLOPT_POSTFIELDS, $json_data);
-curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
-curl_setopt( $ch, CURLOPT_HEADER, 0);
-curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
-
-$response = curl_exec( $ch );
-curl_close( $ch );
-?>
-    <?php
-    }
-    ?>
   
 
 
